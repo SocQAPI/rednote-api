@@ -1,0 +1,406 @@
+{
+  "schemaVersion": 1,
+  "platform": "rednote",
+  "platformName": "Rednote (Xiaohongshu)",
+  "baseUrl": "https://api.socq.ai",
+  "creditUsd": 0.005,
+  "endpoints": [
+    {
+      "publicId": "rednote/comment-replies",
+      "name": "Rednote Comment Replies API",
+      "description": "Collect one page of public replies beneath a known Rednote comment, returning normalized reply text, author context, thread relationships, timestamps, and visible metrics when available.",
+      "method": "POST",
+      "path": "/v1/rednote/comment-replies",
+      "payload": "payloads/comment-replies.json",
+      "launchedAt": "2026-08-18",
+      "price": "1 credit ($0.005) per call",
+      "billing": {
+        "baseCredits": 1,
+        "mode": "fixed"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/rednote/comment-replies",
+      "landingUrl": "https://socq.ai/apis/rednote/comment-replies",
+      "required": [
+        "comment_id",
+        "url"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "comment_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A public comment identifier."
+          },
+          "url": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A public content or product URL."
+          }
+        },
+        "required": [
+          "comment_id",
+          "url"
+        ]
+      }
+    },
+    {
+      "publicId": "rednote/home-recommendations",
+      "name": "Rednote Home Recommendations API",
+      "description": "Collect one public Rednote home recommendation page without a seed query, then read normalized post, author, media, engagement, and collection-time fields.",
+      "method": "POST",
+      "path": "/v1/rednote/home-recommendations",
+      "payload": "payloads/home-recommendations.json",
+      "launchedAt": "2026-08-17",
+      "price": "1 credit ($0.005) per call",
+      "billing": {
+        "baseCredits": 1,
+        "mode": "fixed"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/rednote/home-recommendations",
+      "landingUrl": "https://socq.ai/apis/rednote/home-recommendations",
+      "required": [],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "category": {
+            "type": "string",
+            "minLength": 1
+          },
+          "media_type": {
+            "type": "string",
+            "minLength": 1,
+            "enum": [
+              "all",
+              "image",
+              "video"
+            ]
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 40,
+            "default": 20
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "publicId": "rednote/note-comments",
+      "name": "Rednote Note Comments API",
+      "description": "Collect one page of public comments from a Rednote note URL with normalized text, author context, timestamps, note references, and visible engagement fields.",
+      "method": "POST",
+      "path": "/v1/rednote/note-comments",
+      "payload": "payloads/note-comments.json",
+      "launchedAt": "2026-08-17",
+      "price": "1 credit ($0.005) per call",
+      "billing": {
+        "baseCredits": 1,
+        "mode": "fixed"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/rednote/note-comments",
+      "landingUrl": "https://socq.ai/apis/rednote/note-comments",
+      "required": [
+        "url"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "url": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A public content or product URL."
+          }
+        },
+        "required": [
+          "url"
+        ]
+      }
+    },
+    {
+      "publicId": "rednote/note-detail",
+      "name": "Rednote Note Detail API",
+      "description": "Retrieve one public Rednote note from a token-bearing xiaohongshu.com or xhslink.com URL with normalized text, author, media, timestamps, and visible engagement.",
+      "method": "POST",
+      "path": "/v1/rednote/note-detail",
+      "payload": "payloads/note-detail.json",
+      "launchedAt": "2026-08-17",
+      "price": "1 credit ($0.005) per call",
+      "billing": {
+        "baseCredits": 1,
+        "mode": "fixed"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/rednote/note-detail",
+      "landingUrl": "https://socq.ai/apis/rednote/note-detail",
+      "required": [
+        "url"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "url": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A public content or product URL."
+          }
+        },
+        "required": [
+          "url"
+        ]
+      }
+    },
+    {
+      "publicId": "rednote/search-notes",
+      "name": "Rednote Search Notes API",
+      "description": "Search public Rednote notes by text query with optional sort, media, and time filters, returning normalized content, authors, media, timestamps, and visible engagement.",
+      "method": "POST",
+      "path": "/v1/rednote/search-notes",
+      "payload": "payloads/search-notes.json",
+      "launchedAt": "2026-08-17",
+      "price": "1 credit ($0.005) per call",
+      "billing": {
+        "baseCredits": 1,
+        "mode": "fixed"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/rednote/search-notes",
+      "landingUrl": "https://socq.ai/apis/rednote/search-notes",
+      "required": [
+        "query"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "media_type": {
+            "type": "string",
+            "minLength": 1,
+            "enum": [
+              "all",
+              "image",
+              "video"
+            ]
+          },
+          "published_within": {
+            "type": "string",
+            "minLength": 1,
+            "enum": [
+              "all",
+              "day",
+              "six_months",
+              "week"
+            ]
+          },
+          "query": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Search query."
+          },
+          "sort_by": {
+            "type": "string",
+            "minLength": 1,
+            "enum": [
+              "general",
+              "latest",
+              "most_liked"
+            ]
+          }
+        },
+        "required": [
+          "query"
+        ]
+      }
+    },
+    {
+      "publicId": "rednote/search-users",
+      "name": "Rednote Search Users API",
+      "description": "Search public Rednote accounts with one text query and return normalized identity, biography, account flags, and visible audience or content metrics from one provider page.",
+      "method": "POST",
+      "path": "/v1/rednote/search-users",
+      "payload": "payloads/search-users.json",
+      "launchedAt": "2026-08-17",
+      "price": "1 credit ($0.005) per call",
+      "billing": {
+        "baseCredits": 1,
+        "mode": "fixed"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/rednote/search-users",
+      "landingUrl": "https://socq.ai/apis/rednote/search-users",
+      "required": [
+        "query"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "query": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Search query."
+          }
+        },
+        "required": [
+          "query"
+        ]
+      }
+    },
+    {
+      "publicId": "rednote/user-notes",
+      "name": "Rednote User Notes API",
+      "description": "Collect one page of public Rednote notes from a supported user URL or user ID, returning normalized text, authors, media, timestamps, and visible engagement.",
+      "method": "POST",
+      "path": "/v1/rednote/user-notes",
+      "payload": "payloads/user-notes.json",
+      "launchedAt": "2026-08-17",
+      "price": "1 credit ($0.005) per call",
+      "billing": {
+        "baseCredits": 1,
+        "mode": "fixed"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/rednote/user-notes",
+      "landingUrl": "https://socq.ai/apis/rednote/user-notes",
+      "required": [],
+      "requiredAnyOf": [
+        [
+          "url"
+        ],
+        [
+          "user_id"
+        ]
+      ],
+      "mutuallyExclusive": [
+        [
+          "url",
+          "user_id"
+        ]
+      ],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "url": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A public Rednote profile URL or xhslink.com/xhslink.cn share link."
+          },
+          "user_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A 24-character internal Rednote user ID, not a nickname or Rednote number.",
+            "pattern": "^[0-9a-fA-F]{24}$"
+          }
+        },
+        "required": [],
+        "anyOf": [
+          {
+            "required": [
+              "url"
+            ]
+          },
+          {
+            "required": [
+              "user_id"
+            ]
+          }
+        ],
+        "allOf": [
+          {
+            "not": {
+              "required": [
+                "url",
+                "user_id"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "publicId": "rednote/user-profile",
+      "name": "Rednote User Profile API",
+      "description": "Retrieve one public Rednote profile by supported account URL or user_id, returning normalized identity, profile imagery, account flags, visible counts, and collection time.",
+      "method": "POST",
+      "path": "/v1/rednote/user-profile",
+      "payload": "payloads/user-profile.json",
+      "launchedAt": "2026-08-17",
+      "price": "1 credit ($0.005) per call",
+      "billing": {
+        "baseCredits": 1,
+        "mode": "fixed"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/rednote/user-profile",
+      "landingUrl": "https://socq.ai/apis/rednote/user-profile",
+      "required": [],
+      "requiredAnyOf": [
+        [
+          "url"
+        ],
+        [
+          "user_id"
+        ]
+      ],
+      "mutuallyExclusive": [
+        [
+          "url",
+          "user_id"
+        ]
+      ],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "url": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A public Rednote profile URL or xhslink.com/xhslink.cn share link."
+          },
+          "user_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A 24-character internal Rednote user ID, not a nickname or Rednote number.",
+            "pattern": "^[0-9a-fA-F]{24}$"
+          }
+        },
+        "required": [],
+        "anyOf": [
+          {
+            "required": [
+              "url"
+            ]
+          },
+          {
+            "required": [
+              "user_id"
+            ]
+          }
+        ],
+        "allOf": [
+          {
+            "not": {
+              "required": [
+                "url",
+                "user_id"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

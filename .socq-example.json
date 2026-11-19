@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "templateVersion": "2.0.0",
+  "kind": "platform",
+  "platform": "rednote",
+  "endpointCount": 8,
+  "endpoints": [
+    "rednote/comment-replies",
+    "rednote/home-recommendations",
+    "rednote/note-comments",
+    "rednote/note-detail",
+    "rednote/search-notes",
+    "rednote/search-users",
+    "rednote/user-notes",
+    "rednote/user-profile"
+  ],
+  "landingPage": "https://socq.ai/apis/rednote",
+  "docsPage": "https://docs.socq.ai/api-manual/rednote/overview",
+  "generatedFrom": "SocQAPI/socq-example-template"
+}
